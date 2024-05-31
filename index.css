@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    background: cornsilk url("zadnik.webp") ;
+    background-attachment: fixed;
+}
+.content {
+    width: 70%;
+    margin: 50px auto 0 auto;
+    background: cornsilk url("maga.jpg");
+    min-height: calc(100vh - 200px);
+    padding: 20px;
+}
+
+.suhariki {
+    font-size: 34px;
+    color: #000000;
+    text-align: center;
+    text-indent: 20px;
+}
+a {
+    text-decoration: none;
+    color: #0026ff;
+    padding: 20px;
+
+}
+.pivo {
+    background-color:#ffffff;
+    margin-top: 30px;
+}
+td {
+    border: 4px solid black;
+    padding: 20px;
+    font-size: 15px;
+}
+hr {
+    border: none;
+    color: #0026ff;
+    background-color: black;
+    height:5px;
+}
+table{
+    margin-top: 20px;
+	 
+}

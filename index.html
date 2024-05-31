@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Raleway:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="application/javascript" src="index.js"></script>
+    <title>минён мага</title>
+</head>
+<body>
+<div class="content">
+    <h1 class="suhariki">Таблица с магами</h1>
+    <table class="pivo" align="center">
+        <tr>
+            <td>
+                <a href="#load" onclick="view('load'); return false">Загрузить оценки</a>
+            </td>
+            <td>
+                <a href="#edit" onclick="view('edit'); return false">Редактировать журнал</a>
+            </td>
+            <td>
+                <a href="#statistics" onclick="view('statistics'); return false">Статистика (Табличная)</a>
+            </td>
+            <td>
+                <a href="#charts" onclick="view('charts'); return false">Статистика (Графическая)</a>
+            </td>
+            <td>
+                <a href="#helpmepls" onclick="view('helpmepls'); return false">Помощь</a>
+            </td>
+            <td>
+                <a href="#aboutmexd" onclick="view('aboutmexd'); return false">О маге</a>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <div id="load" style="display: none;">
+
+        <h1>Загрузка оценок маг</h1>
+        <input type="file" id="fileInput" onchange="loadStudentsData()">
+    </div>
+    <div id="edit" style="display: none;">
+
+        <h1>Редактирование/Добавление/Удаление магов</h1>
+        <table id="editTable" border="1">
+        </table>
+        <button onclick="saveData('csv')">Сохранить магу в CSV</button>
+        <button onclick="saveData('txt')">Сохранить магу в TXT</button>
+        <button onclick="saveData('xlsx')">Сохранить магу в XLSX</button>
+    </div>
+    <div id="statistics" style="display: none;">
+
+        <h1>Статистика по магам(Табличная)</h1>
+        <table id="statisticsTable" border="1">
+        </table>
+        <table id="studentsStatisticsTable" border="1" style="display: none;">
+        </table>
+    </div>
+    <div id="charts" style="display: none;">
+
+        <h1>Статистика по магам(Графическая)</h1>
+        <canvas id="chart-average"></canvas>
+        <canvas id="chart-median"></canvas>
+        <button onclick="drawChart()">Построить график магов</button>
+        <canvas id="studentGradesChart"></canvas>
+        <button onclick="drawstudentChart()">Построить график статистики магов</button>
+    </div>
+    <div id="helpmepls" style="display: none;">
+
+        <h1>HELP(НЕГР)</h1>
+        <img src="deadp47-smoke.gif" alt="дед уронил сигаретку))">
+        <p style="font-size: 30px; font-weight: bold;">Вопщем по всем вопросам можите обращаца по ссылке ниже</p>
+        <p><a href="https://vk.com/aesthetics.ofagony" target="_blank" style="color: red;font-size: 50px;">СЮДА</a></p>
+    </div>
+    <div id="aboutmexd" style="display: none;">
+
+        <h1>О маге</h1>
+        <img src="deadp47-dance.gif" alt="дед танцует">
+        <p style="font-size: 20px; font-weight: bold;">Кароче это супер крутецкий сайт, который ваще много чего позволяет</p>
+        <p style="font-size: 20px; font-weight: bold;">жоско загружать таблицы там, потом жоско их редактировать</p>
+        <img src="palec.png" alt="palec">
+    </div>
+</div>
+
+<script>
+
+let ctx = document.getElementById('chart').getContext('2d');
+let chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Average Grade',
+            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+            data: []
+        },
+        {
+            label: 'Median Grade',
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+            data: []
+        },
+        {
+            label: 'Percentage of Grades',
+            backgroundColor: 'rgba(255, 206, 86, 0.5)',
+            borderColor: 'rgba(255, 206, 86, 1)',
+            borderWidth: 1,
+            data: []
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>
